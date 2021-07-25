@@ -1,2 +1,2 @@
 # deepgaze-webui
-A deepgaze web interface for creating images with text through API requests.
+A deepgaze web interface for generating images through artifical intelligence with text via API requests.
