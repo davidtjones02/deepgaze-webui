@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>Image Creator</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <h3>Enter text below to create a new image</h3>
+      <input id="image_text" type="text" class="form-text" placeholder="Enter text here <3">
+      <button style="margin-top: 1rem;" onclick="start()">Click me to begin!</button>
+    </div>
+    <div class="row statistics" >
+      <h4 style="font-weight: 500; margin-bottom: 0rem">Progress</h4>
+      <table id="stats">
+        <tr style="border: 2px solid red;">
+          <th>Total Progress</th>
+          <th>Iteration</th>
+          <th>Folder Name</th>
+        </tr>
+        <tr>
+          <td>0%</td>
+          <td>0 / 1050</td>
+          <td>...</td>
+        </tr>
+      </table>
+      <p style="font-weight: 300; margin: 0; font-size: 14px; margin-top: 1.5rem;">Final Image Below:</p>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<style>
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #212121;
+    color: #fff;
+  }
+  .container {
+    position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  }
+  .form-text {
+    all: unset;
+    text-align: center;
+    border-bottom: 1px solid grey;
+    transition: border-bottom 0.5s ease;
+  }
+  .form-text:focus {
+    border-bottom: 1px solid white;
+  }
+  .row {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  button {
+    border: none;
+    padding: 0.525rem;
+    font-family: 'Open Sans', sans-serif;
+    transition: background-color 0.5s ease;
+  }
+  button:hover {
+    background-color: #04c266;
+    color: #fff;
+  }
+  .statistics {
+    margin-top: 0.825rem;
+    text-align: center;
+  }
+  #stats {
+    margin-top: 0.825rem;
+  }
+</style>
+
+<script>
+  function start() {
+
+$.post( "/new_image", { text: $('#image_text').val() })
+  .done(function( data ) {
+    alert( "Data Loaded: " + data );
+  });
+  }
+</script>
